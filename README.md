@@ -1,7 +1,7 @@
 # pilgrim-map
 Simple map renderer for starseed pilgrim saves.
 
-This is the CLI script version, requires ImageMagick for Perl 5.
+This is the CLI script version, requires ImageMagick for Perl 5. (On Ubuntu you just need to install `libimage-magick-perl` using apt.)
 
 CGI version is hosted at http://a.carapetis.com/pilgrim/
 

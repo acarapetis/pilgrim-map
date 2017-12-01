@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# vim: syntax=perl
 
 use strict;
 use warnings;
