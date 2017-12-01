@@ -17,6 +17,7 @@ my @COLORS = map {[ map { $_ / 256 } @$_ ]} (
     [150,223,17],    # shrubbery / green
     [154,100,220],   # castle / purple
     [111,131,147],   # bedrock / grey
+    [0,0,0],         # pilgrimage entrance
 );
 
 binmode STDOUT;
@@ -31,10 +32,11 @@ my $data;
 }
 
 while ($data =~ /\cF.(\d+),(\d+),(\d+),-?\d+,-?\d+/g) {
-    my $x = $2 // next;
-    my $y = $3 // next;
-    my $c = $1 // next;
-    $img->SetPixel(x => $x, y => $y, color => $COLORS[$c]);
+    if ($1 < 0 or $1 > $#COLORS) {
+        warn "Unknown color $1";
+        next;
+    }
+    $img->SetPixel(x => $2, y => $3, color => $COLORS[$1]);
 }
 
 $img->Write('png:-');
